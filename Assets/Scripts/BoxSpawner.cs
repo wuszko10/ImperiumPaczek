@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoxSpawner : MonoBehaviour
 {
-    public GameObject box;
+    public GameObject BoxWooden;
     public Transform spawnPoint;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class BoxSpawner : MonoBehaviour
     {
         if (spawnPoint != null)
         {
-            Instantiate(box, spawnPoint.position, spawnPoint.rotation);
+            Instantiate(BoxWooden, spawnPoint.position, spawnPoint.rotation);
         }
     }
 }
