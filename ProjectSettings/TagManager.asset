@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - BoxWooden
+  - Conveyor1
+  - CreateConveyor
+  - BasicConveyor
+  - ExtendConveyor
   layers:
   - Default
   - TransparentFX

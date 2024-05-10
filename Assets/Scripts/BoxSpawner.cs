@@ -4,28 +4,55 @@ using UnityEngine;
 
 public class BoxSpawner : MonoBehaviour
 {
-    public GameObject BoxWooden;
-    public Transform spawnPoint;
-    // Start is called before the first frame update
+    public GameObject BoxWooden; // Prefab pude³ka drewnianego
+    public Transform spawnPoint; // Punkt, w którym bêd¹ tworzone pude³ka
+
+    private float defaultSpawnInterval = 5f; // Domyœlny interwa³ czasowy miêdzy tworzeniem pude³ek
+    private float fastSpawnInterval = 2f; // Interwa³ czasowy miêdzy tworzeniem pude³ek po szybkim ulepszeniu
+    private bool automaticSpawnEnabled = true; // Flaga w³¹czaj¹ca automatyczne tworzenie pude³ek
+    private PointsManager pointsManager; // Referencja do skryptu zarz¹dzaj¹cego punktami
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
+        pointsManager = PointsManager.Instance; // Zdob¹dŸ referencjê do PointsManager
+        if (pointsManager == null)
         {
-            SpawnBox();
+            Debug.LogError("PointsManager script not found in the scene!");
+            return;
         }
+
+        // Rozpocznij automatyczne tworzenie pude³ek co okreœlony interwa³ czasowy
+        InvokeRepeating("SpawnBox", defaultSpawnInterval, defaultSpawnInterval);
+
+        // Subskrybuj zdarzenie OnPoints10Reached
+        pointsManager.OnPoints10Reached += OnPoints10Reached;
     }
 
     void SpawnBox()
     {
-        if (spawnPoint != null)
+        if (automaticSpawnEnabled && spawnPoint != null)
         {
-            Instantiate(BoxWooden, spawnPoint.position, spawnPoint.rotation);
+            // Tworzymy pude³ko w punkcie spawnu
+            GameObject spawnedBox = Instantiate(BoxWooden, spawnPoint.position, spawnPoint.rotation);
+
+            // Nadajemy pude³ku drewnianemu odpowiedni tag
+            spawnedBox.tag = "BoxWooden";
         }
+    }
+
+    // Metoda zmieniaj¹ca interwa³ czasowy tworzenia pude³ek na 1 sekundê
+    public void FastSpawnInterval()
+    {
+        CancelInvoke("SpawnBox"); // Anuluj poprzednie wywo³anie metody SpawnBox
+
+        // Rozpocznij automatyczne tworzenie pude³ek co 1 sekundê
+        InvokeRepeating("SpawnBox", fastSpawnInterval, fastSpawnInterval);
+    }
+
+    // Metoda wywo³ywana po zdobyciu 10 punktów
+    void OnPoints10Reached()
+    {
+        // Zmieñ interwa³ czasowy tworzenia pude³ek na 1 sekundê
+        FastSpawnInterval();
     }
 }

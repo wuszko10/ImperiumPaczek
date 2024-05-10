@@ -4,20 +4,8 @@ using UnityEngine;
 
 public class MachineInteraction : MonoBehaviour
 {
-
-    public GameObject upgradedBox;
+    public GameObject upgradedBoxPrefab;
     public Transform spawnPoint;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -25,9 +13,13 @@ public class MachineInteraction : MonoBehaviour
         {
             Destroy(other.gameObject);
 
-            if(spawnPoint != null)
+            if (spawnPoint != null)
             {
-                Instantiate(upgradedBox, spawnPoint.position, spawnPoint.rotation);
+                // Tworzymy ulepszone pude³ko
+                GameObject upgradedBox = Instantiate(upgradedBoxPrefab, spawnPoint.position, spawnPoint.rotation);
+
+                // Nadajemy ulepszonemu pude³ku odpowiedni tag
+                upgradedBox.tag = "upgradedBox";
             }
         }
     }
