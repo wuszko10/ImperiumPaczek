@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class BoxSpawner : MonoBehaviour
 {
-    public GameObject BoxWooden; // Prefab pude³ka drewnianego
-    public Transform spawnPoint; // Punkt, w którym bêd¹ tworzone pude³ka
+    public GameObject BoxWooden; // Prefab pudeÅ‚ka drewnianego
+    public Transform spawnPoint; // Punkt, w ktÃ³rym bÄ™dÄ… tworzone pudeÅ‚ka
 
-    private float defaultSpawnInterval = 5f; // Domyœlny interwa³ czasowy miêdzy tworzeniem pude³ek
-    private float fastSpawnInterval = 2f; // Interwa³ czasowy miêdzy tworzeniem pude³ek po szybkim ulepszeniu
-    private bool automaticSpawnEnabled = true; // Flaga w³¹czaj¹ca automatyczne tworzenie pude³ek
-    private PointsManager pointsManager; // Referencja do skryptu zarz¹dzaj¹cego punktami
+    private float defaultSpawnInterval = 5f; // DomyÅ›lny interwaÅ‚ czasowy miÄ™dzy tworzeniem pudeÅ‚ek
+    private float fastSpawnInterval = 2f; // InterwaÅ‚ czasowy miÄ™dzy tworzeniem pudeÅ‚ek po szybkim ulepszeniu
+    private bool automaticSpawnEnabled = true; // Flaga wÅ‚Ä…czajÄ…ca automatyczne tworzenie pudeÅ‚ek
+    private PointsManager pointsManager; // Referencja do skryptu zarzÄ…dzajÄ…cego punktami
 
     private void Start()
     {
-        pointsManager = PointsManager.Instance; // Zdob¹dŸ referencjê do PointsManager
+        pointsManager = PointsManager.Instance; // ZdobÄ…dÅº referencjÄ™ do PointsManager
         if (pointsManager == null)
         {
             Debug.LogError("PointsManager script not found in the scene!");
             return;
         }
 
-        // Rozpocznij automatyczne tworzenie pude³ek co okreœlony interwa³ czasowy
+        // Rozpocznij automatyczne tworzenie pudeÅ‚ek co okreÅ›lony interwaÅ‚ czasowy
         InvokeRepeating("SpawnBox", defaultSpawnInterval, defaultSpawnInterval);
 
         // Subskrybuj zdarzenie OnPoints10Reached
@@ -30,7 +30,8 @@ public class BoxSpawner : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Anuluj subskrypcjê zdarzenia, aby unikn¹æ wycieków pamiêci
+        // Anuluj subskrypcjï¿½ zdarzenia, aby uniknï¿½ï¿½ wyciekï¿½w pamiï¿½ci
+
         if (pointsManager != null)
         {
             pointsManager.OnPoints10Reached -= OnPoints10Reached;
@@ -41,27 +42,26 @@ public class BoxSpawner : MonoBehaviour
     {
         if (automaticSpawnEnabled && spawnPoint != null)
         {
-            // Tworzymy pude³ko w punkcie spawnu
+            // Tworzymy pudeÅ‚ko w punkcie spawnu
             GameObject spawnedBox = Instantiate(BoxWooden, spawnPoint.position, spawnPoint.rotation);
 
-            // Nadajemy pude³ku drewnianemu odpowiedni tag
+            // Nadajemy pudeÅ‚ku drewnianemu odpowiedni tag
             spawnedBox.tag = "BoxWooden";
         }
     }
 
-    // Metoda zmieniaj¹ca interwa³ czasowy tworzenia pude³ek na 1 sekundê
+    // Metoda zmieniajÄ…ca interwaÅ‚ czasowy tworzenia pudeÅ‚ek na 1 sekundÄ™
     public void FastSpawnInterval()
     {
-        CancelInvoke("SpawnBox"); // Anuluj poprzednie wywo³anie metody SpawnBox
+        CancelInvoke("SpawnBox"); // Anuluj poprzednie wywoÅ‚anie metody SpawnBox
 
-        // Rozpocznij automatyczne tworzenie pude³ek co 1 sekundê
+        // Rozpocznij automatyczne tworzenie pudeÅ‚ek co 1 sekundÄ™
         InvokeRepeating("SpawnBox", fastSpawnInterval, fastSpawnInterval);
     }
-
-    // Metoda wywo³ywana po zdobyciu 10 punktów
+    // Metoda wywoï¿½ywana po zdobyciu 10 punktï¿½w
     private void OnPoints10Reached()
     {
-        // Zmieñ interwa³ czasowy tworzenia pude³ek na 1 sekundê
+        // ZmieÅ„ interwaÅ‚ czasowy tworzenia pudeÅ‚ek na 1 sekundÄ™
         FastSpawnInterval();
     }
 }
