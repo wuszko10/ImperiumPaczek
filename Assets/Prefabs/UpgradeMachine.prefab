@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e99d5b289edabf94b9ad10acc71f99f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradedBox: {fileID: 4719980263240685548, guid: 8adb7d3b26869d849b6f79285e8923b5, type: 3}
+  upgradedBoxPrefab: {fileID: 4719980263240685548, guid: 8adb7d3b26869d849b6f79285e8923b5, type: 3}
   spawnPoint: {fileID: 4389967969877078138}
 --- !u!1 &489442040106124009
 GameObject:

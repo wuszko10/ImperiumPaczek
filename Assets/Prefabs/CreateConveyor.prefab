@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3120395994464378958}
   - component: {fileID: 14016850641181362}
   - component: {fileID: 2171517187786727290}
-  - component: {fileID: 536862682542315605}
   m_Layer: 0
   m_Name: CreateConveyor
   m_TagString: Conveyor1
@@ -107,20 +106,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &536862682542315605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6371266761669354805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58f75df5587e524eb13bf6b269ad714, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BasicConveyor: {fileID: 527622633650269027, guid: 1d9c38dba911caa44bc80261df9f4601, type: 3}
-  spawnPoint: {fileID: 306854158089011542}
 --- !u!1 &7388396194770357653
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,7 +27,7 @@ public class UpdateConveyor : MonoBehaviour
         {
             float distance = Vector3.Distance(transform.position, conveyor.transform.position);
             
-            // Jeœli odleg³oœæ jest mniejsza ni¿ okreœlona wartoœæ
+            // Jeï¿½li odlegï¿½oï¿½ï¿½ jest mniejsza niï¿½ okreï¿½lona wartoï¿½ï¿½
             if (distance <= removalDistance)
             {
                 Destroy(conveyor);

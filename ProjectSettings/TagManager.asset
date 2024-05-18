@@ -9,6 +9,7 @@ TagManager:
   - CreateConveyor
   - BasicConveyor
   - ExtendConveyor
+  - upgradedBox
   layers:
   - Default
   - TransparentFX

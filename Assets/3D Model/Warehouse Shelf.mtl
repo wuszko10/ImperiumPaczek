@@ -1,0 +1,15 @@
+# Blender MTL File: 'Warehouse Shelf.blend'
+# Material Count: 1
+
+newmtl Material.001
+Ns 323.999994
+Ka 0.750000 0.750000 0.750000
+Kd 0.083531 0.083531 0.083531
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump E:\\3D\\Market\\Prop\\Warehouse Shelf\\Warehouse Shelf\\Textures\\Unity\\Dirty\\2K\\Triangulated_Material.001_Normal.png
+map_Kd E:\\3D\\Market\\Prop\\Warehouse Shelf\\Warehouse Shelf\\Textures\\Unity\\Dirty\\2K\\Triangulated_Material.001_AlbedoTransparency.png
+refl E:\\3D\\Market\\Prop\\Warehouse Shelf\\Warehouse Shelf\\Textures\\Unity\\Dirty\\2K\\Triangulated_Material.001_MetallicSmoothness.png
