@@ -119,8 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58f75df5587e524eb13bf6b269ad714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BasicConveyor: {fileID: 527622633650269027, guid: 1d9c38dba911caa44bc80261df9f4601, type: 3}
+  BasicConveyorPrefab: {fileID: 527622633650269027, guid: 1d9c38dba911caa44bc80261df9f4601, type: 3}
+  UpgradeConveyorBoxPrefab: {fileID: 7377627883098771236, guid: 7381a8ec96573b547a729a442dfe86a6, type: 3}
   spawnPoint: {fileID: 306854158089011542}
+  baseRequiredPoints: 10
 --- !u!1 &7388396194770357653
 GameObject:
   m_ObjectHideFlags: 0

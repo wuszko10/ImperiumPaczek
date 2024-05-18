@@ -46,4 +46,15 @@ public class PointsManager : MonoBehaviour
             OnPoints10Reached(); // Wywo³aj zdarzenie
         }
     }
+    
+    public int GetPoints()
+    {
+        return totalPoints;
+    }
+
+    public void SubtractPoints(int points)
+    {
+        totalPoints -= points;
+    }
 }
+

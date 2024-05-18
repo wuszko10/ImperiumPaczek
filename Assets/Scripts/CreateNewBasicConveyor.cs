@@ -5,35 +5,58 @@ using UnityEngine;
 public class CreateNewBasicConveyor : MonoBehaviour
 {
     public GameObject BasicConveyorPrefab;
-    public GameObject UpdateConveyorPrefab;
+    public GameObject UpgradeConveyorBoxPrefab;
     public Transform spawnPoint;
     private float newYOffset = 12f;
     private ConveyorManager conveyorManager;
+    private PointsManager pointsManager;
+
+    // Globalna zmienna zdefiniowana przez u¿ytkownika
+    public int baseRequiredPoints;
 
     void Start()
     {
         conveyorManager = FindObjectOfType<ConveyorManager>();
+        pointsManager = FindObjectOfType<PointsManager>(); // Za³ó¿my, ¿e jest taki skrypt
     }
 
     void OnCollisionEnter(Collision collision)
     {
-
-        if (conveyorManager != null && conveyorManager.CanCreateConveyor())
+        if (pointsManager != null)
         {
-            GameObject newBasicConveyor = Instantiate(BasicConveyorPrefab, spawnPoint.position, spawnPoint.rotation);
-            Vector3 leftOffset = transform.right * 2f;
-            GameObject newUpdateConveyor = Instantiate(UpdateConveyorPrefab, transform.position + leftOffset, transform.rotation);
+            int basicConveyorCount = conveyorManager.GetBasicConveyorCount();
+            int requiredPoints = baseRequiredPoints * (basicConveyorCount + 1);
 
-            conveyorManager.IncreaseBasicConveyorCount();
+            int currentPoints = pointsManager.GetPoints(); // U¿ycie metody GetPoints()
 
-            if (conveyorManager.CanCreateConveyor())
+            if (currentPoints >= requiredPoints)
             {
-                Vector3 newCreateConveyorPosition = transform.position + Vector3.forward * newYOffset;
-                GameObject newCreateConveyor = Instantiate(gameObject, newCreateConveyorPosition, transform.rotation);
-                
-            }
 
-            Destroy(gameObject);
+                if (conveyorManager != null && conveyorManager.CanCreateConveyor())
+                {
+                    GameObject newBasicConveyor = Instantiate(BasicConveyorPrefab, spawnPoint.position, spawnPoint.rotation);
+                    Vector3 leftOffset = transform.right * 2f;
+                    GameObject newUpdateConveyorBox = Instantiate(UpgradeConveyorBoxPrefab, transform.position + leftOffset, transform.rotation);
+
+                    conveyorManager.IncreaseBasicConveyorCount();
+
+                    if (conveyorManager.CanCreateConveyor())
+                    {
+                        Vector3 newCreateConveyorPosition = transform.position + Vector3.forward * newYOffset;
+                        GameObject newCreateConveyor = Instantiate(gameObject, newCreateConveyorPosition, transform.rotation);
+
+                    }
+
+                    pointsManager.SubtractPoints(requiredPoints);
+
+                    Destroy(gameObject);
+                }
+            }
+            else
+            {
+                int neededPoints = requiredPoints - currentPoints;
+                Debug.Log("Za ma³o punktów. Potrzebujesz jeszcze " + neededPoints + " pkt aby kupiæ tê maszynê");
+            }
         }
     }
 }

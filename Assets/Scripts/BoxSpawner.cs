@@ -12,7 +12,7 @@ public class BoxSpawner : MonoBehaviour
     private bool automaticSpawnEnabled = true; // Flaga w³¹czaj¹ca automatyczne tworzenie pude³ek
     private PointsManager pointsManager; // Referencja do skryptu zarz¹dzaj¹cego punktami
 
-    void Start()
+    private void Start()
     {
         pointsManager = PointsManager.Instance; // Zdob¹dŸ referencjê do PointsManager
         if (pointsManager == null)
@@ -28,7 +28,16 @@ public class BoxSpawner : MonoBehaviour
         pointsManager.OnPoints10Reached += OnPoints10Reached;
     }
 
-    void SpawnBox()
+    private void OnDestroy()
+    {
+        // Anuluj subskrypcjê zdarzenia, aby unikn¹æ wycieków pamiêci
+        if (pointsManager != null)
+        {
+            pointsManager.OnPoints10Reached -= OnPoints10Reached;
+        }
+    }
+
+    private void SpawnBox()
     {
         if (automaticSpawnEnabled && spawnPoint != null)
         {
@@ -50,7 +59,7 @@ public class BoxSpawner : MonoBehaviour
     }
 
     // Metoda wywo³ywana po zdobyciu 10 punktów
-    void OnPoints10Reached()
+    private void OnPoints10Reached()
     {
         // Zmieñ interwa³ czasowy tworzenia pude³ek na 1 sekundê
         FastSpawnInterval();
