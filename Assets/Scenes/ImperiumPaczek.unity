@@ -1282,6 +1282,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 536862682542315605, guid: 5780115e7bb2616438a3887fca49dc9e, type: 3}
+      propertyPath: requiredPoints
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 536862682542315605, guid: 5780115e7bb2616438a3887fca49dc9e, type: 3}
+      propertyPath: baseRequiredPoints
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 536862682542315605, guid: 5780115e7bb2616438a3887fca49dc9e, type: 3}
       propertyPath: BasicConveyorPrefab
       value: 
       objectReference: {fileID: 527622633650269027, guid: 1d9c38dba911caa44bc80261df9f4601, type: 3}
@@ -1289,6 +1297,10 @@ PrefabInstance:
       propertyPath: UpdateConveyorPrefab
       value: 
       objectReference: {fileID: 7377627883098771236, guid: 7381a8ec96573b547a729a442dfe86a6, type: 3}
+    - target: {fileID: 536862682542315605, guid: 5780115e7bb2616438a3887fca49dc9e, type: 3}
+      propertyPath: UpgradeConveyorPrefab
+      value: 
+      objectReference: {fileID: 811183287923443296, guid: 8b1d2bd877c53ce4398255e25b3afdc2, type: 3}
     - target: {fileID: 921715487257025118, guid: 5780115e7bb2616438a3887fca49dc9e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.481766
@@ -1714,9 +1726,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2308246341469930455, guid: 7381a8ec96573b547a729a442dfe86a6, type: 3}
+      propertyPath: baseRequiredPoints
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7377627883098771236, guid: 7381a8ec96573b547a729a442dfe86a6, type: 3}
       propertyPath: m_Name
-      value: UpdateConveyor
+      value: UpgradeConveyorBox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

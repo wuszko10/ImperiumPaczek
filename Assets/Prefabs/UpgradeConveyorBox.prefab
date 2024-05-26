@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1337878296375547391}
   - component: {fileID: 2308246341469930455}
   m_Layer: 0
-  m_Name: UpdateConveyor
+  m_Name: UpgradeConveyorBox
   m_TagString: Conveyor1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,6 +122,7 @@ MonoBehaviour:
   ExtendConveyorPrefab: {fileID: 811183287923443296, guid: 8b1d2bd877c53ce4398255e25b3afdc2, type: 3}
   basicConveyorPrefab: {fileID: 527622633650269027, guid: 1d9c38dba911caa44bc80261df9f4601, type: 3}
   spawnPoint: {fileID: 2429682507305533188}
+  baseRequiredPoints: 30
 --- !u!1 &9163574666493012012
 GameObject:
   m_ObjectHideFlags: 0

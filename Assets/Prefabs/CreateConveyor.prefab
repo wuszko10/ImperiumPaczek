@@ -106,6 +106,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &536862682542315605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6371266761669354805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a58f75df5587e524eb13bf6b269ad714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BasicConveyorPrefab: {fileID: 527622633650269027, guid: 1d9c38dba911caa44bc80261df9f4601, type: 3}
+  UpgradeConveyorBoxPrefab: {fileID: 7377627883098771236, guid: 7381a8ec96573b547a729a442dfe86a6, type: 3}
+  spawnPoint: {fileID: 306854158089011542}
+  baseRequiredPoints: 10
 --- !u!1 &7388396194770357653
 GameObject:
   m_ObjectHideFlags: 0

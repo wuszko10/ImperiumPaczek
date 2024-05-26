@@ -30,7 +30,8 @@ public class BoxSpawner : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Anuluj subskrypcję zdarzenia, aby uniknąć wycieków pamięci
+        // Anuluj subskrypcj� zdarzenia, aby unikn�� wyciek�w pami�ci
+
         if (pointsManager != null)
         {
             pointsManager.OnPoints10Reached -= OnPoints10Reached;
@@ -57,8 +58,7 @@ public class BoxSpawner : MonoBehaviour
         // Rozpocznij automatyczne tworzenie pudełek co 1 sekundę
         InvokeRepeating("SpawnBox", fastSpawnInterval, fastSpawnInterval);
     }
-
-    // Metoda wywoływana po zdobyciu 10 punktów
+    // Metoda wywo�ywana po zdobyciu 10 punkt�w
     private void OnPoints10Reached()
     {
         // Zmień interwał czasowy tworzenia pudełek na 1 sekundę
