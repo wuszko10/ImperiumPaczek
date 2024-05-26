@@ -11,13 +11,13 @@ public class CreateNewBasicConveyor : MonoBehaviour
     private ConveyorManager conveyorManager;
     private PointsManager pointsManager;
 
-    // Globalna zmienna zdefiniowana przez u¿ytkownika
+    // Globalna zmienna zdefiniowana przez uï¿½ytkownika
     public int baseRequiredPoints;
 
     void Start()
     {
         conveyorManager = FindObjectOfType<ConveyorManager>();
-        pointsManager = FindObjectOfType<PointsManager>(); // Za³ó¿my, ¿e jest taki skrypt
+        pointsManager = FindObjectOfType<PointsManager>(); // Zaï¿½ï¿½my, ï¿½e jest taki skrypt
     }
 
     void OnCollisionEnter(Collision collision)
@@ -27,7 +27,7 @@ public class CreateNewBasicConveyor : MonoBehaviour
             int basicConveyorCount = conveyorManager.GetBasicConveyorCount();
             int requiredPoints = baseRequiredPoints * (basicConveyorCount + 1);
 
-            int currentPoints = pointsManager.GetPoints(); // U¿ycie metody GetPoints()
+            int currentPoints = pointsManager.GetPoints(); // Uï¿½ycie metody GetPoints()
 
             if (currentPoints >= requiredPoints)
             {
@@ -55,7 +55,7 @@ public class CreateNewBasicConveyor : MonoBehaviour
             else
             {
                 int neededPoints = requiredPoints - currentPoints;
-                Debug.Log("Za ma³o punktów. Potrzebujesz jeszcze " + neededPoints + " pkt aby kupiæ tê maszynê");
+                Debug.Log("Za maÅ‚o punktÃ³w. Potrzebujesz jeszcze " + neededPoints + " pkt aby kupiÄ‡ tÄ™ maszynÄ™");
             }
         }
     }

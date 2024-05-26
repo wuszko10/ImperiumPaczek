@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3120395994464378958}
   - component: {fileID: 14016850641181362}
   - component: {fileID: 2171517187786727290}
+  - component: {fileID: 536862682542315605}
   m_Layer: 0
   m_Name: CreateConveyor
   m_TagString: Conveyor1
