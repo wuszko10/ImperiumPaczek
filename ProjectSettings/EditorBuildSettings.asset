@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 9512cb3394ba2824a9e3aea44a3b6a3e
+  - enabled: 1
+    path: Assets/Scenes/ImperiumPaczek.unity
+    guid: e0f1d20533ae1c54b8636696093f6571
   m_configObjects: {}
