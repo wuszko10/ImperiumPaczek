@@ -814,6 +814,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae6fc39b84fbff418f6a07d8721297d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsToAddWooden: 1
+  pointsToAddUpgraded: 2
 --- !u!1 &6226435493543911098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,7 +1794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8290380322569382396}
   - component: {fileID: 7920781142591845135}
-  - component: {fileID: 4134135038475717300}
+  - component: {fileID: 5740514023651271336}
   m_Layer: 0
   m_Name: Conveyor_Long (2)
   m_TagString: Untagged
@@ -1839,7 +1841,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.7045907, y: 0.87642026, z: 7.56223}
   m_Center: {x: -0.055701137, y: 1.2048745, z: -0.06786299}
---- !u!114 &4134135038475717300
+--- !u!114 &5740514023651271336
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
