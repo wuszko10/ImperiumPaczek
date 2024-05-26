@@ -6,7 +6,7 @@ public class ConveyorManager : MonoBehaviour
 {
     private int basicConveyorCount = 0;
     private int upgradedConveyorCount = 0;
-    private int maxConveyors = 6;
+    private int maxConveyors = 7;
 
     public bool CanCreateConveyor()
     {
