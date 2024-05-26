@@ -12,6 +12,7 @@ public class UpgradeConveyor : MonoBehaviour
 
     private ConveyorManager conveyorManager;
     private PointsManager pointsManager;
+    private LevelManager levelManager;
 
     public int baseRequiredPoints;
 
@@ -19,6 +20,7 @@ public class UpgradeConveyor : MonoBehaviour
     {
         conveyorManager = FindObjectOfType<ConveyorManager>();
         pointsManager = FindObjectOfType<PointsManager>();
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     void Update()
@@ -45,10 +47,11 @@ public class UpgradeConveyor : MonoBehaviour
                     if (conveyorManager != null && conveyorManager.CanUpgradeConveyor() && currentPoints >= requiredPoints)
                     {                    
                         Destroy(conveyor);
-                        Vector3 adjustedSpawnPosition = spawnPoint.position + spawnPoint.forward * 10f;
+                        Vector3 adjustedSpawnPosition = spawnPoint.position + spawnPoint.forward * 8f;
                         GameObject newExtendConveyor = Instantiate(ExtendConveyorPrefab, adjustedSpawnPosition, spawnPoint.rotation);
                         conveyorManager.IncreaseUpgradedConveyorCount();
                         pointsManager.SubtractPoints(requiredPoints);
+                        levelManager.AddLevel();
                         Destroy(gameObject);
                     }
                     else

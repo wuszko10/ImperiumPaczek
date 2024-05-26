@@ -10,6 +10,7 @@ public class CreateNewBasicConveyor : MonoBehaviour
     private float newYOffset = 12f;
     private ConveyorManager conveyorManager;
     private PointsManager pointsManager;
+    private LevelManager levelManager;
 
     // Globalna zmienna zdefiniowana przez u¿ytkownika
     public int baseRequiredPoints;
@@ -17,7 +18,8 @@ public class CreateNewBasicConveyor : MonoBehaviour
     void Start()
     {
         conveyorManager = FindObjectOfType<ConveyorManager>();
-        pointsManager = FindObjectOfType<PointsManager>(); // Za³ó¿my, ¿e jest taki skrypt
+        pointsManager = FindObjectOfType<PointsManager>();
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -48,6 +50,7 @@ public class CreateNewBasicConveyor : MonoBehaviour
                     }
 
                     pointsManager.SubtractPoints(requiredPoints);
+                    levelManager.AddLevel();
 
                     Destroy(gameObject);
                 }
