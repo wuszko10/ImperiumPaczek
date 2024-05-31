@@ -7,12 +7,14 @@ public class UpgradeConveyor : MonoBehaviour
     public GameObject ExtendConveyorPrefab;
     public GameObject basicConveyorPrefab;
     public Transform spawnPoint;
+
     private float removalDistance = 5f;
     private GameObject[] basicConveyors;
 
     private ConveyorManager conveyorManager;
     private PointsManager pointsManager;
     private LevelManager levelManager;
+    private ToggleVisibility toggleVisibility;
 
     public int baseRequiredPoints;
 
@@ -21,6 +23,7 @@ public class UpgradeConveyor : MonoBehaviour
         conveyorManager = FindObjectOfType<ConveyorManager>();
         pointsManager = FindObjectOfType<PointsManager>();
         levelManager = FindObjectOfType<LevelManager>();
+        toggleVisibility = FindObjectOfType<ToggleVisibility>();
     }
 
     void Update()
@@ -57,7 +60,7 @@ public class UpgradeConveyor : MonoBehaviour
                     else
                     {
                         int neededPoints = requiredPoints - currentPoints;
-                        Debug.Log("Za ma³o punktów. Potrzebujesz jeszcze " + neededPoints + " pkt aby ulepszyæ tê maszynê");
+                        toggleVisibility.ShowObject("Za ma³o punktów. Potrzebujesz jeszcze " + neededPoints + " pkt aby ulepszyæ tê maszynê");
                     }
                 }
             }            

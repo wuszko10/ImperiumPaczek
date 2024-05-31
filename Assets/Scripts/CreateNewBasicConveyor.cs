@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CreateNewBasicConveyor : MonoBehaviour
 {
     public GameObject BasicConveyorPrefab;
     public GameObject UpgradeConveyorBoxPrefab;
     public Transform spawnPoint;
+
     private float newYOffset = 12f;
     private ConveyorManager conveyorManager;
     private PointsManager pointsManager;
     private LevelManager levelManager;
+    private ToggleVisibility toggleVisibility;
 
     // Globalna zmienna zdefiniowana przez u�ytkownika
     public int baseRequiredPoints;
@@ -20,6 +23,7 @@ public class CreateNewBasicConveyor : MonoBehaviour
         conveyorManager = FindObjectOfType<ConveyorManager>();
         pointsManager = FindObjectOfType<PointsManager>();
         levelManager = FindObjectOfType<LevelManager>();
+        toggleVisibility = FindObjectOfType<ToggleVisibility>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -58,7 +62,7 @@ public class CreateNewBasicConveyor : MonoBehaviour
             else
             {
                 int neededPoints = requiredPoints - currentPoints;
-                Debug.Log("Za mało punktów. Potrzebujesz jeszcze " + neededPoints + " pkt aby kupić tę maszynę");
+                toggleVisibility.ShowObject("Za mało punktów. Potrzebujesz jeszcze " + neededPoints + " pkt aby kupić tę maszynę");
             }
         }
     }

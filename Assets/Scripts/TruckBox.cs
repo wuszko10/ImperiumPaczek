@@ -12,11 +12,13 @@ public class TruckBox : MonoBehaviour
 
     private PointsManager pointsManager;
     private LevelManager levelManager;
+    private ToggleVisibility toggleVisibility;
 
     void Start()
     {
         pointsManager = FindObjectOfType<PointsManager>();
         levelManager = FindObjectOfType<LevelManager>();
+        toggleVisibility = FindObjectOfType<ToggleVisibility>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -38,15 +40,15 @@ public class TruckBox : MonoBehaviour
                 if (currentLevel < requiredLevel && currentPoints < requiredPoints)
                 {
                     int neededPoints = requiredPoints - currentPoints;
-                    Debug.Log("Musisz osi¹gn¹æ level 14 oraz ma za ma³o punktów. Potrzebujesz jeszcze " + neededPoints + ", aby kupiæ obiekt");
+                    toggleVisibility.ShowObject("Musisz osi¹gn¹æ level 14 oraz masz za ma³o punktów. Potrzebujesz jeszcze " + neededPoints + ", aby kupiæ obiekt");
                 } else if (currentLevel < requiredLevel && currentPoints >= requiredPoints)
                 {
-                    Debug.Log("Musisz osi¹gn¹æ level " + requiredLevel + ", aby kupiæ obiekt");
+                    toggleVisibility.ShowObject("Musisz osi¹gn¹æ level " + requiredLevel + ", aby kupiæ obiekt");
                 }                
                 else
                 {
                     int neededPoints = requiredPoints - currentPoints;
-                    Debug.Log("Potrzebujesz jeszcze " + neededPoints + ", aby kupiæ obiekt");
+                    toggleVisibility.ShowObject("Potrzebujesz jeszcze " + neededPoints + ", aby kupiæ obiekt");
                 }
                 
             }
