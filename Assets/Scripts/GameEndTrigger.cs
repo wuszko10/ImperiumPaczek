@@ -4,55 +4,75 @@ using UnityEngine.SceneManagement;
 
 public class GameEndTrigger : MonoBehaviour
 {
-    public Canvas popUpCanvas;  // Reference to the Canvas component
-    public Button endGameButton; // Reference to the End Game button
-    public Button cancelButton; // Reference to the Cancel button
+    public GameObject endMenuCanvas;  // Reference to the Canvas component
+    public Button endButton; // Reference to the End Game button
+    public Button backButton; // Reference to the Cancel button
+
+    private MonoBehaviour fpsController;
 
     private void Start()
     {
-        // Find the Canvas and Buttons if they are not assigned in the Inspector
-        if (popUpCanvas == null)
+        Time.timeScale = 1f;
+        fpsController = FindObjectOfType<FirstPersonController>();
+
+        if (endMenuCanvas == null)
         {
-            popUpCanvas = GameObject.Find("PopUpCanvas").GetComponent<Canvas>();
+            endMenuCanvas = GameObject.Find("EndMenu");
+            if (endMenuCanvas == null)
+            {
+                Debug.LogError("EndMenu canvas not found! Make sure it exists and is named 'EndMenu'.");
+                return;
+            }
         }
 
-        if (endGameButton == null)
+        // Find buttons within the EndMenu
+        if (endButton == null)
         {
-            endGameButton = popUpCanvas.transform.Find("EndGameButton").GetComponent<Button>();
+            endButton = endMenuCanvas.transform.Find("EndButton").GetComponent<Button>();
         }
 
-        if (cancelButton == null)
+        if (endButton == null)
         {
-            cancelButton = popUpCanvas.transform.Find("CancelButton").GetComponent<Button>();
+            endButton = endMenuCanvas.transform.Find("BackButton").GetComponent<Button>();
         }
 
-        // Ensure the pop-up is not visible at the start
-        if (popUpCanvas != null)
+        // Add listeners to buttons
+        if (backButton != null)
         {
-            popUpCanvas.gameObject.SetActive(false);
+            backButton.onClick.AddListener(Cancel);
+        }
+        else
+        {
+            Debug.LogWarning("Resume button not found!");
         }
 
-        // Add listeners to the buttons
-        if (endGameButton != null)
+        if (endButton != null)
         {
-            endGameButton.onClick.AddListener(EndGame);
+            endButton.onClick.AddListener(EndGame);
+        }
+        else
+        {
+            Debug.LogWarning("Quit button not found!");
         }
 
-        if (cancelButton != null)
-        {
-            cancelButton.onClick.AddListener(Cancel);
-        }
+        // Ensure the pause menu is not visible at start
+        endMenuCanvas.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    public void ShowPopup(Collider other)
     {
-        if (other.CompareTag("Player") && popUpCanvas != null)
+        if (other.CompareTag("Player") && endMenuCanvas != null)
         {
             // Show the pop-up panel
-            popUpCanvas.gameObject.SetActive(true);
+            endMenuCanvas.SetActive(true);
             // Show and unlock the cursor
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            if (fpsController != null)
+            {
+                fpsController.enabled = false;
+            }
         }
     }
 
@@ -62,20 +82,24 @@ public class GameEndTrigger : MonoBehaviour
         Application.Quit();
 
         // If running in the editor, stop playing
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
+    #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+    #endif
     }
 
     void Cancel()
     {
         // Hide the pop-up panel
-        if (popUpCanvas != null)
+        if (endMenuCanvas != null)
         {
-            popUpCanvas.gameObject.SetActive(false);
+            endMenuCanvas.SetActive(false);
             // Hide and lock the cursor
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            if (fpsController != null)
+            {
+                fpsController.enabled = true;
+            }
         }
     }
 }
