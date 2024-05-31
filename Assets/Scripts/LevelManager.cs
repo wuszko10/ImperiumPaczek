@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance; // Referencja do instancji, aby skrypt by³ dostêpny globalnie
     public TMP_Text levelText; // Referencja do komponentu TMP_Text, który bêdzie wyœwietla³ punkty
-    private int totalLevels = 0; // Ca³kowita liczba punktów
+    private int totalLevels = 1; // Ca³kowita liczba punktów
 
     private void Awake()
     {

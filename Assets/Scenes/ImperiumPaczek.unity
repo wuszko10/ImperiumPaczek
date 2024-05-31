@@ -3833,8 +3833,8 @@ MonoBehaviour:
   ExitPrefab: {fileID: 1749513851948840843, guid: 6da4f3b203f559943847e1ec5c0d9418, type: 3}
   spawnPoint: {fileID: 5588267359584763341}
   exitSpawnPoint: {fileID: 1906480527}
-  requiredPoints: 0
-  requiredLevel: 0
+  requiredPoints: 1000
+  requiredLevel: 14
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
