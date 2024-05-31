@@ -6,7 +6,9 @@ public class TruckBox : MonoBehaviour
 {
 
     public GameObject TruckPrefab;
+    public GameObject ExitPrefab;
     public Transform spawnPoint;
+    public Transform exitSpawnPoint;
     public int requiredPoints;
     public int requiredLevel;
 
@@ -32,6 +34,7 @@ public class TruckBox : MonoBehaviour
             {
                 Vector3 adjustedSpawnPosition = spawnPoint.position + spawnPoint.forward * 8f;
                 GameObject newExtendConveyor = Instantiate(TruckPrefab, adjustedSpawnPosition, spawnPoint.rotation);
+                GameObject newExit = Instantiate(ExitPrefab, exitSpawnPoint.position, exitSpawnPoint.rotation);
                 pointsManager.SubtractPoints(requiredPoints);
                 Destroy(gameObject);
             } 
@@ -40,15 +43,15 @@ public class TruckBox : MonoBehaviour
                 if (currentLevel < requiredLevel && currentPoints < requiredPoints)
                 {
                     int neededPoints = requiredPoints - currentPoints;
-                    toggleVisibility.ShowObject("Musisz osi¹gn¹æ level 14 oraz masz za ma³o punktów. Potrzebujesz jeszcze " + neededPoints + ", aby kupiæ obiekt");
+                    toggleVisibility.ShowObject("Musisz osiï¿½gnï¿½ï¿½ level 14 oraz masz za maï¿½o punktï¿½w. Potrzebujesz jeszcze " + neededPoints + ", aby kupiï¿½ obiekt");
                 } else if (currentLevel < requiredLevel && currentPoints >= requiredPoints)
                 {
-                    toggleVisibility.ShowObject("Musisz osi¹gn¹æ level " + requiredLevel + ", aby kupiæ obiekt");
+                    toggleVisibility.ShowObject("Musisz osiï¿½gnï¿½ï¿½ level " + requiredLevel + ", aby kupiï¿½ obiekt");
                 }                
                 else
                 {
                     int neededPoints = requiredPoints - currentPoints;
-                    toggleVisibility.ShowObject("Potrzebujesz jeszcze " + neededPoints + ", aby kupiæ obiekt");
+                    toggleVisibility.ShowObject("Potrzebujesz jeszcze " + neededPoints + ", aby kupiï¿½ obiekt");
                 }
                 
             }
