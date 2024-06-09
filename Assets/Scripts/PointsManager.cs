@@ -55,6 +55,7 @@ public class PointsManager : MonoBehaviour
     public void SubtractPoints(int points)
     {
         totalPoints -= points;
+        UpdatePointsUI();
     }
 }
 
