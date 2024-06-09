@@ -43,15 +43,15 @@ public class TruckBox : MonoBehaviour
                 if (currentLevel < requiredLevel && currentPoints < requiredPoints)
                 {
                     int neededPoints = requiredPoints - currentPoints;
-                    toggleVisibility.ShowObject("Musisz osi�gn�� level 14 oraz masz za ma�o punkt�w. Potrzebujesz jeszcze " + neededPoints + ", aby kupi� obiekt");
+                    toggleVisibility.ShowObject("Musisz osiągnąć level 14 oraz masz za mało punktów. Potrzebujesz jeszcze " + neededPoints + ", aby kupić obiekt");
                 } else if (currentLevel < requiredLevel && currentPoints >= requiredPoints)
                 {
-                    toggleVisibility.ShowObject("Musisz osi�gn�� level " + requiredLevel + ", aby kupi� obiekt");
+                    toggleVisibility.ShowObject("Musisz osiągnąć level " + requiredLevel + ", aby kupić obiekt");
                 }                
                 else
                 {
                     int neededPoints = requiredPoints - currentPoints;
-                    toggleVisibility.ShowObject("Potrzebujesz jeszcze " + neededPoints + ", aby kupi� obiekt");
+                    toggleVisibility.ShowObject("Potrzebujesz jeszcze " + neededPoints + ", aby kupić obiekt");
                 }
                 
             }
